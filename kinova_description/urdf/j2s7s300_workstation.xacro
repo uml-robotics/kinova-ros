@@ -18,7 +18,7 @@
 
 
   <xacro:include filename="$(find kinova_description)/urdf/j2s7s300.xacro"/>
-  <xacro:include filename="$(find uml_hri_nerve_pick_and_place)/urdf/workstation_model.urdf.xacro" />
+  <xacro:include filename="$(find uml_hri_nerve_armada_workstation)/workstation_description/workstation_model.urdf.xacro" />
 
   <xacro:workstation prefix="table_"/>
 
