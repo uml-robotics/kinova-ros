@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Table of Contents 
 - [Important](#important) 
 - [Kinova-ROS](#kinova-ros)
@@ -419,4 +418,3 @@ Other plugins in rqt can similarly be used for quick interation with the robot.
 
 ## Report a Bug
 Any bugs, issues or suggestions may be sent to support@kinova.ca
-=======
