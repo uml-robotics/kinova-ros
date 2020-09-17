@@ -471,7 +471,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.00999999978
       Style: Points
-      Topic: /left_camera/depth/points
+      Topic: /camera_left/depth/points
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -501,7 +501,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.00999999978
       Style: Points
-      Topic: /right_camera/depth/points
+      Topic: /camera_right/depth/points
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -531,7 +531,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.00999999978
       Style: Points
-      Topic: /rear_camera/depth/points
+      Topic: /camera_rear/depth/points
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -561,7 +561,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.00999999978
       Style: Points
-      Topic: /top_camera/depth/points
+      Topic: /camera_top/depth/points
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
