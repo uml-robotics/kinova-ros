@@ -6,15 +6,15 @@
   <!-- The name of the parameter under which the URDF is loaded -->
   <arg name="robot_description" default="robot_description"/>
   <!-- By default we are not loading the workstation into the environment -->
-  <arg name="use_workstation" default="false"/>
+  <arg name="use_sim_workstation" default="false"/>
 
   <!-- Load universal robot description format (URDF) (No workstation) -->
-  <group unless="$(arg use_workstation)">
+  <group unless="$(arg use_sim_workstation)">
     <param if="$(arg load_robot_description)" name="$(arg robot_description)" command="$(find xacro)/xacro.py '$(find kinova_description)/urdf/j2s7s300_standalone.xacro'"/>
   </group>
 
   <!-- Load universal robot description format (URDF) -->
-  <group if="$(arg use_workstation)">
+  <group if="$(arg use_sim_workstation)">
     <param if="$(arg load_robot_description)" name="$(arg robot_description)" command="$(find xacro)/xacro.py '$(find kinova_description)/urdf/j2s7s300_workstation.xacro'"/>
   </group>
 
