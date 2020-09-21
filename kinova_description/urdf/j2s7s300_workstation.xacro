@@ -22,7 +22,6 @@
 
   <xacro:workstation prefix="table_"/>
 
-  <!-- for gazebo -->
   <link name="world"/>
   
   <joint name="connect_world_and_table" type="fixed">

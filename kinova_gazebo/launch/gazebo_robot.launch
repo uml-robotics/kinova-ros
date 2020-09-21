@@ -28,9 +28,9 @@
   </include>
 
   <!-- j2s7s300 gazebo controllers and move_group launch file -->
-  <include file="$(find j2s7s300_moveit_config)/launch/j2s7s300_gazebo_demo.launch">
+  <!-- <include file="$(find j2s7s300_moveit_config)/launch/$(arg kinova_robotType)_gazebo_demo.launch"> -->
+  <include file="$(eval find(arg('kinova_robotType') + '_moveit_config') + '/launch/' + arg('kinova_robotType') + '_gazebo_demo.launch')">
     <arg name="use_sim_workstation" value="$(arg use_sim_workstation)"/>
   </include>
 
 </launch>
-

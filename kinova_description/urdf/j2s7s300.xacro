@@ -164,11 +164,8 @@
 
         <xacro:kinova_3fingers link_hand="${prefix}_link_7" prefix="${prefix}_"/>
 
-        <xacro:three_finger_gripping_gazebo robot="${prefix}" />
+        <xacro:three_finger_gripping_gazebo robot="${prefix}" DoF="7"/>
 
     </xacro:macro>
-
-
-
 
 </root>

@@ -18,6 +18,7 @@
 
     <xacro:include filename="$(find kinova_description)/urdf/kinova_common.xacro" />
     <xacro:include filename="$(find kinova_description)/urdf/kinova_finger_set.xacro" />
+    <xacro:include filename="$(find kinova_description)/urdf/three_finger_gripping_gazebo.xacro" />
 
     <!-- Import all Gazebo-customization elements -->
     <xacro:include filename="$(find kinova_description)/urdf/kinova.gazebo" />
@@ -143,13 +144,13 @@
         <xacro:kinova_armlink link_name="${prefix}_link_6" link_mesh="${link_6_mesh}" use_ring_mesh="true" ring_mesh="ring_small" mesh_no="${link_6_mesh_no}"/>
         <xacro:kinova_armjoint joint_name="${prefix}_joint_6" type="${joint_6_type}" parent="${prefix}_link_5" child="${prefix}_link_6" joint_axis_xyz="${joint_6_axis_xyz}" joint_origin_xyz="${joint_6_origin_xyz}" joint_origin_rpy="${joint_6_origin_rpy}" joint_lower_limit="${joint_6_lower_limit}" joint_upper_limit="${joint_6_upper_limit}" joint_velocity_limit="${joint_6_velocity_limit}" joint_torque_limit="${joint_6_torque_limit}"/>
 
-
         <xacro:kinova_virtual_link link_name="${prefix}_end_effector"/>
         <xacro:kinova_virtual_joint joint_name="${prefix}_joint_end_effector" type="${joint_end_effector_type}" parent="${prefix}_link_6" child="${prefix}_end_effector" joint_axis_xyz="${joint_end_effector_axis_xyz}" joint_origin_xyz="${joint_end_effector_origin_xyz}" joint_origin_rpy="${joint_end_effector_origin_rpy}" joint_lower_limit="0" joint_upper_limit="0"/>
 
-    <xacro:kinova_3fingers link_hand="${prefix}_link_6" prefix="${prefix}_"/>
+        <xacro:kinova_3fingers link_hand="${prefix}_link_6" prefix="${prefix}_"/>
+
+        <xacro:three_finger_gripping_gazebo robot="${prefix}" DoF="6"/>
 
     </xacro:macro>
-
 
 </robot>
