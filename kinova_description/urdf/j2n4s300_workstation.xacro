@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!-- j2n4_3 refers to jaco v2 4DOF non-spherical 3fingers -->
+
+
+<robot xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:gazebo="http://playerstage.sourceforge.net/gazebo/xmlschema/#gz"
+    xmlns:model="http://playerstage.sourceforge.net/gazebo/xmlschema/#model"
+    xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+    xmlns:body="http://playerstage.sourceforge.net/gazebo/xmlschema/#body"
+    xmlns:geom="http://playerstage.sourceforge.net/gazebo/xmlschema/#geom"
+    xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#joint"
+    xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+    xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+    xmlns:rendering="http://playerstage.sourceforge.net/gazebo/xmlschema/#rendering"
+    xmlns:renderable="http://playerstage.sourceforge.net/gazebo/xmlschema/#renderable"
+    xmlns:physics="http://playerstage.sourceforge.net/gazebo/xmlschema/#physics"
+    xmlns:xacro="http://www.ros.org/wiki/xacro" name="j2n4s300">
+
+
+  <xacro:include filename="$(find kinova_description)/urdf/j2n4s300.xacro"/>
+  <xacro:include filename="$(find uml_hri_nerve_armada_workstation)/workstation_description/workstation_model.urdf.xacro" />
+
+  <xacro:workstation prefix="table_" namespace=""/>
+
+  <link name="world"/>
+
+  <joint name="connect_world_and_table" type="fixed">
+    <child link="table_base_link" />
+    <parent link="world" />
+    <origin xyz="0.0 0.0 0.41" rpy="0.0 0.0 0.0" />    
+  </joint> 
+
+  <link name="root"/>
+
+  <joint name="connect_table_and_root" type="fixed">
+    <child link="root" />
+    <parent link="table_mounting_plate_link" />
+    <origin xyz="0.0 0.0 0.03625" rpy="0.0 0.0 ${-pi/2}" />    
+  </joint>  
+
+  <xacro:property name="robot_root" value="root" />
+
+  <xacro:j2n4s300  base_parent="${robot_root}"/>
+
+</robot>

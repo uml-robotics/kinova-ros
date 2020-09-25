@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <launch>
 
   <param name="robot_type" value="m1n6s300" />
@@ -13,9 +14,13 @@
   <!-- By default, we are not in debug mode -->
   <arg name="debug" default="false" />
 
+  <!-- By default we are not using the simulated Gazebo ARMada workstation -->
+  <arg name="use_sim_workstation" default="false"/>
+
   <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
   <include file="$(find m1n6s300_moveit_config)/launch/planning_context.launch">
     <arg name="load_robot_description" value="true"/>
+    <arg name="use_sim_workstation" value="$(arg use_sim_workstation)"/>
   </include>
 
   <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->

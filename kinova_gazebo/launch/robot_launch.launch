@@ -1,7 +1,8 @@
+<?xml version="1.0"?>
 <launch>
 
   <!-- these are the arguments you can pass this launch file, for example paused:=true -->  
-  <arg name="kinova_robotType" default="j2n6s300"/>
+  <arg name="kinova_robotType" default="j2s7s300"/>
   <arg name="kinova_robotName" default="$(arg kinova_robotType)"/>
   <arg name="paused" default="true"/>
   <arg name="use_sim_time" default="true"/>
@@ -10,6 +11,7 @@
   <arg name="debug" default="false"/>
   <arg name="use_trajectory_controller" default="true"/>
   <arg name="is7dof" default="false"/>
+  <arg name="use_sim_workstation" default="false"/>
 
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -22,8 +24,15 @@
   </include>
 
   <!-- Load the URDF into the ROS Parameter Server -->
-  <param name="robot_description"
+  <group unless="$(arg use_sim_workstation)">
+    <param name="robot_description"
     command="$(find xacro)/xacro --inorder '$(find kinova_description)/urdf/$(arg kinova_robotType)_standalone.xacro'" />
+  </group>
+
+  <group if="$(arg use_sim_workstation)">
+    <param name="robot_description"
+    command="$(find xacro)/xacro --inorder '$(find kinova_description)/urdf/$(arg kinova_robotType)_workstation.xacro'" />
+  </group>
 
   <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
   <!-- For the 6DOF -->
