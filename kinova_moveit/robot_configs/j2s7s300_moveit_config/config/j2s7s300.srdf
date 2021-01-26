@@ -9,6 +9,10 @@
     <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
     <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
     <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="manipulator_and_endeffector">
+      <group name="arm" />
+      <group name="gripper" />
+    </group>
     <group name="arm">
         <chain base_link="root" tip_link="j2s7s300_end_effector" />
     </group>
@@ -17,7 +21,7 @@
         <link name="j2s7s300_link_finger_1" />
         <link name="j2s7s300_link_finger_2" />
         <link name="j2s7s300_link_finger_3" />
-				<joint name="j2s7s300_joint_finger_1" />
+	<joint name="j2s7s300_joint_finger_1" />
         <joint name="j2s7s300_joint_finger_2" />
         <joint name="j2s7s300_joint_finger_3" />
     </group>
@@ -67,7 +71,7 @@
         <joint name="j2s7s300_joint_finger_3" value="1.6" />
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
-    <end_effector name="end_effector" parent_link="j2s7s300_end_effector" group="gripper" />
+    <end_effector name="end_effector" parent_link="j2s7s300_end_effector" group="gripper" parent_group="arm" />
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <virtual_joint name="world_to_base_virtual_joint" type="fixed" parent_frame="world_frame" child_link="root" />
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->

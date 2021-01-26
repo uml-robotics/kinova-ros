@@ -5,6 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
+        - /MotionPlanning1/Planning Request1
       Splitter Ratio: 0.742560029
     Tree Height: 459
   - Class: rviz/Help
@@ -65,6 +66,22 @@ Visualization Manager:
         Color Enabled: false
         Interrupt Display: false
         Links:
+          /table_left_optical:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          /table_rear_optical:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          /table_right_optical:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          /table_top_optical:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
           All Links Enabled: true
           Expand Joint Details: false
           Expand Link Details: false
@@ -163,10 +180,6 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          table_left_optical:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
           table_left_vertical_arm_link:
             Alpha: 1
             Show Axes: false
@@ -192,10 +205,6 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          table_rear_optical:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
           table_rear_vertical_arm_link:
             Alpha: 1
             Show Axes: false
@@ -211,10 +220,6 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          table_right_optical:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
           table_right_vertical_arm_link:
             Alpha: 1
             Show Axes: false
@@ -225,10 +230,6 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          table_top_optical:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
           world:
             Alpha: 1
             Show Axes: false
@@ -255,7 +256,7 @@ Visualization Manager:
         Goal State Color: 250; 128; 0
         Interactive Marker Size: 0
         Joint Violation Color: 255; 0; 255
-        Planning Group: arm
+        Planning Group: manipulator_and_endeffector
         Query Goal State: true
         Query Start State: false
         Show Workspace: false
@@ -273,6 +274,22 @@ Visualization Manager:
       Scene Robot:
         Attached Body Color: 150; 50; 150
         Links:
+          /table_left_optical:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          /table_rear_optical:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          /table_right_optical:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          /table_top_optical:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
           All Links Enabled: true
           Expand Joint Details: false
           Expand Link Details: false
@@ -371,10 +388,6 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          table_left_optical:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
           table_left_vertical_arm_link:
             Alpha: 1
             Show Axes: false
@@ -400,10 +413,6 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          table_rear_optical:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
           table_rear_vertical_arm_link:
             Alpha: 1
             Show Axes: false
@@ -419,10 +428,6 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          table_right_optical:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
           table_right_vertical_arm_link:
             Alpha: 1
             Show Axes: false
@@ -433,10 +438,6 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          table_top_optical:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
           world:
             Alpha: 1
             Show Axes: false
@@ -597,10 +598,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.20479694
+      Pitch: 0.194796965
       Target Frame: root
       Value: XYOrbit (rviz)
-      Yaw: 0.941858172
+      Yaw: 0.261858493
     Saved: ~
 Window Geometry:
   Displays:
@@ -614,7 +615,7 @@ Window Geometry:
     collapsed: false
   MotionPlanning - Trajectory Slider:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000002a2000003c9fc0200000007fb000000100044006900730070006c00610079007301000000220000025e000000d500fffffffb0000000800480065006c00700000000342000000bb0000006d00fffffffb0000000a0056006900650077007300000003b0000000b0000000a900fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000004400fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e00670100000284000001670000015000ffffff0000047e000003c900000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000002a2000003c9fc0200000007fb000000100044006900730070006c00610079007301000000220000025e000000d500fffffffb0000000800480065006c00700000000342000000bb0000006d00fffffffb0000000a0056006900650077007300000003b0000000b0000000a900fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000004400fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e00670100000284000001670000015900ffffff0000047e000003c900000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
   Width: 1828
