@@ -33,4 +33,7 @@
     <arg name="use_sim_workstation" value="$(arg sim_workstation)"/>
   </include>
 
+  <!-- Start GPD -->
+  <include file="$(find gpd_ros)/launch/ur5.launch" />
+
 </launch>
