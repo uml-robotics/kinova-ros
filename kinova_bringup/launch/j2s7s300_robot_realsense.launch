@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="use_urdf" default="true"/>
+  <arg name="kinova_robotType" default="j2s7s300" />
+  <arg name="kinova_robotName" default="$(arg kinova_robotType)"/>
+  <!-- Current serial number of camera in front of kinova robot -->
+  <arg name="serial_no" default="843112073834" />
+  <arg name="use_sim_workstation" default="false" />
+	<arg name="kinova_robotSerial" default="not_set" />
+	<arg name="use_jaco_v1_fingers" default="false" />
+	<arg name="feedback_publish_rate" default="0.1" />
+
+  <!-- If the node handles multiple robots uncomment this and configure /config/multiple_robots.yaml" -->
+	<rosparam file="$(find kinova_bringup)/launch/config/multiple_robots.yaml" command="load" />
+
+  <node name="$(arg kinova_robotName)_driver" pkg="kinova_driver" type="kinova_arm_driver" output="screen" cwd="node" args="$(arg kinova_robotType)">
+    <rosparam file="$(find kinova_bringup)/launch/config/robot_parameters.yaml" command="load" />
+    <param name="serial_number" value="$(arg kinova_robotSerial)" />   
+    <param name="robot_name" value="$(arg kinova_robotName)" />   
+    <param name="robot_type" value="$(arg kinova_robotType)" />   
+    <param name="use_jaco_v1_fingers" value="$(arg use_jaco_v1_fingers)" />   
+    <param name="status_interval_seconds" value="$(arg feedback_publish_rate)" />
+  </node>
+    
+  <group unless="$(arg use_urdf)">
+    <node name="$(arg kinova_robotName)_tf_updater" pkg="kinova_driver" type="kinova_tf_updater" output="screen" cwd="node" args="$(arg kinova_robotType)">
+      <remap from="/$(arg kinova_robotName)_tf_updater/in/joint_angles" to="/$(arg kinova_robotName)_driver/out/joint_angles"/>
+      <param name="base_frame" value="root"/>
+    </node>
+  </group>
+
+  <group if="$(arg use_urdf)">
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find kinova_description)/urdf/$(arg kinova_robotType)_standalone.xacro'" />
+    <node name="$(arg kinova_robotName)_state_publisher"
+           pkg="robot_state_publisher"
+          type="robot_state_publisher">
+      <remap from="joint_states" to="/$(arg kinova_robotName)_driver/out/joint_state"/>
+    </node>
+  </group>
+
+  <!-- Launch realsense camera nodes with actual camera (serial number typically on back of device) -->
+  <include file="$(find realsense2_camera)/launch/rs_rgbd.launch">
+    <arg name="serial_no" value="$(arg serial_no)"/>
+    <!-- rename the camera -->
+    <arg name="camera" value="wrist_camera" />
+  </include>
+
+  <!-- Launch demo code for j2s7s300 robot to bring up planning execution, etc... -->
+  <include file="$(find j2s7s300_moveit_config)/launch/j2s7s300_demo.launch">
+    <arg name="use_sim_workstation" value="$(arg use_sim_workstation)"/>
+  </include>
+
+  <!-- This transforms each resulting pointcloud into a global reference frame -->
+  <node name="wrist_camera_tf2" pkg="tf" type="static_transform_publisher"
+    args="0.036 0.0 0.025 0.0 3.14 3.14 /table_wrist_camera_link /wrist_camera_link 100" />
+
+</launch>
